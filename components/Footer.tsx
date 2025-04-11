@@ -1,8 +1,24 @@
 import { View, Text, Image } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Footer = () => {
   return (
-    <View className="bg-white px-4 pt-6 pb-4 space-y-6">
+    <View className='mt-2' style={{ flex: 1, position: 'relative' }}>
+        {/* Gradasi di bagian atas */}
+        <LinearGradient
+          colors={['#007AFF', '#ffffff']}
+          start={{ x: 0.5, y: 0 }}
+          end={{ x: 0.5, y: 1 }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 100,
+            zIndex: 1,
+          }}
+        />
+    <View className="bg-white px-4 pb-4 space-y-6"  style={{ padding: 16, marginTop: 100, zIndex: 2 }}>
         <View className='linear-gradient'>
         </View>
       {/* Section 1: Customer Service + Text */}
@@ -50,6 +66,7 @@ const Footer = () => {
 
       {/* Section 3: Footer Text */}
       <Text className="text-center text-gray-400 mt-4 text-xs">Since 2025</Text>
+    </View>
     </View>
   );
 };

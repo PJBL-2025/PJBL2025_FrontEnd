@@ -1,6 +1,29 @@
-import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useRef } from 'react';
+import { Animated, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
+import { MoveRight } from 'lucide-react-native';
+
+const getGreeting = () => {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    hour12: false,
+    timeZone: 'Asia/Jakarta',
+  });
+
+  const wibHour = parseInt(formatter.format(new Date()));
+
+  if (wibHour >= 3 && wibHour < 10) {
+    return 'Good Morning';
+  } else if (wibHour >= 10 && wibHour < 15) {
+    return 'Good Evening';
+  } else if ((wibHour >= 18 && wibHour <= 23) || wibHour === 0) {
+    return 'Good Night';
+  } else {
+    return 'Hello';
+  }
+};
 
 // Category
 const getCategoryIcon = (iconName: string) => {
@@ -89,15 +112,37 @@ const ProductCard = ({
 );
 
 export default function Homepage() {
+  const navigation = useNavigation();
+  const scaleAnim = useRef(new Animated.Value(1)).current;
+  const handlePress = () => {
+    Animated.sequence([
+      Animated.timing(scaleAnim, {
+        toValue: 0.90,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(scaleAnim, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      navigation.navigate('Login');
+    });
+  };
+  
   return (
     <SafeAreaView className="flex-1 bg-blue-500">
       <ScrollView className="flex-1 bg-white">
         {/* Header */}
         <View className="p-4 bg-blue-500">
           <View className="flex-row justify-between items-center mb-4">
-            <Text className="text-lg text-white font-semibold">Good Morning John !! 👋</Text>
-            <View className="flex-row">
-              <TouchableOpacity className="mr-4">
+          <Text className="text-base text-white font-semibold">
+            {getGreeting()}, John👋
+          </Text>
+
+            <View className="flex-row items-center space-x-3">
+              <TouchableOpacity>
                 <Image 
                   source={require('../assets/icons/chat.png')}
                   className="w-6 h-6"
@@ -105,7 +150,8 @@ export default function Homepage() {
                   tintColor="white"
                 />
               </TouchableOpacity>
-              <TouchableOpacity className="mr-4">
+
+              <TouchableOpacity>
                 <Image 
                   source={require('../assets/icons/notif.png')}
                   className="w-6 h-6"
@@ -113,6 +159,7 @@ export default function Homepage() {
                   tintColor="white"
                 />
               </TouchableOpacity>
+
               <TouchableOpacity>
                 <Image 
                   source={require('../assets/icons/cart.png')}
@@ -121,6 +168,14 @@ export default function Homepage() {
                   tintColor="white"
                 />
               </TouchableOpacity>
+
+              <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
+                <TouchableOpacity
+                  onPress={handlePress}
+                  className="bg-white border border-[#007AFF] rounded-2xl px-4 py-2 items-center shadow-md">
+                  <Text className="text-[#007AFF] font-semibold text-base">Login</Text>
+                </TouchableOpacity>
+              </Animated.View>
             </View>
           </View>
           
@@ -151,9 +206,30 @@ export default function Homepage() {
               TMA-2{'\n'}Modular{'\n'}Headphone
             </Text>
             <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
+            </TouchableOpacity>
+
+          </View>
+          
+          <Image
+            source={require('../assets/images/headphone.png')}
+            style={{ width: 100, height: 200 }}
+            resizeMode="contain"
+          />
+          </View>
+          <View className="w-64 h-32 bg-white rounded-xl px-4 py-3 mr-4 flex-row items-center justify-between">
+          <View>
+            <Text className="text-black text-base font-bold mb-2">
+              TMA-2{'\n'}Modular{'\n'}Headphone
+            </Text>
+            <TouchableOpacity>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
             </TouchableOpacity>
           </View>
           
@@ -169,27 +245,10 @@ export default function Homepage() {
               TMA-2{'\n'}Modular{'\n'}Headphone
             </Text>
             <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
-            </TouchableOpacity>
-          </View>
-          
-          <Image
-            source={require('../assets/images/headphone.png')}
-            style={{ width: 100, height: 200 }}
-            resizeMode="contain"
-          />
-          </View>
-          <View className="w-64 h-32 bg-white rounded-xl px-4 py-3 mr-4 flex-row items-center justify-between">
-          <View>
-            <Text className="text-black text-base font-bold mb-2">
-              TMA-2{'\n'}Modular{'\n'}Headphone
-            </Text>
-            <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
             </TouchableOpacity>
           </View>
           
@@ -287,9 +346,10 @@ export default function Homepage() {
               TMA-2{'\n'}Modular{'\n'}Headphone
             </Text>
             <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
             </TouchableOpacity>
           </View>
           
@@ -315,9 +375,10 @@ export default function Homepage() {
               TMA-2{'\n'}Modular{'\n'}Headphone
             </Text>
             <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
             </TouchableOpacity>
           </View>
           
@@ -343,9 +404,10 @@ export default function Homepage() {
               TMA-2{'\n'}Modular{'\n'}Headphone
             </Text>
             <TouchableOpacity>
-              <Text className="text-white font-medium">
-              <Text className="text-blue-500">Shop now→</Text>
-              </Text>
+              <View className="flex-row items-center">
+                <Text className="text-blue-500 font-medium text-base mr-1">Shop now</Text>
+                <MoveRight size={15} color="#3B82F6" />
+              </View>
             </TouchableOpacity>
           </View>
           
