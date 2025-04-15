@@ -63,7 +63,7 @@ export default function Login() {
                         </View>
 
                         {/* Button */}
-                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4">
+                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4" onPress={() => navigation.navigate('Profile')}>
                             <Text className="text-white font-semibold">Next</Text>
                         </TouchableOpacity>
 

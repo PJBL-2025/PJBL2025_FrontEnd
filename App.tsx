@@ -7,12 +7,18 @@ import Homepage from './Pages/Homepage';
 import Login from './Pages/Login';
 import Signup from './Pages/SignUp';
 import SplashScreen from './components/SplashScreen';
+import Profile from 'Pages/Profile';
+import ProfileEdit from 'Pages/ProfileEdit';
+import SearchResult from 'Pages/SearchResult';
 
 type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   Login: undefined;
   Signup: undefined;
+  Profile: undefined;
+  ProfileEdit: undefined;
+  SearchResult: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +34,9 @@ export default function App() {
         <Stack.Screen name="Home" component={Homepage} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
+        <Stack.Screen name="SearchResult" component={SearchResult} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

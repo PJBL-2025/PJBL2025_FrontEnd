@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { Animated, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Animated, Image, ScrollView, Text, TextInput, TouchableOpacity, View, Keyboard, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import Footer from '../components/Footer';
@@ -59,57 +59,57 @@ const CategoryButton = ({ icon, label }: { icon: string; label: string }) => {
   );
 };
 
-const formatRupiah = (price: number) => {
-  return new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
-};
+  const formatRupiah = (price: number) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
 
-// PRODUCT CARD
-const ProductCard = ({
-  title,
-  price,
-  reviews,
-  image,
-}: {
-  title: string;
-  price: number;
-  reviews: number;
-  image: any;
-}) => (
-  <TouchableOpacity
-    className="w-[48%] bg-white rounded-2xl p-3 mb-4"
-    style={{
-      shadowColor: '#687582',
-      shadowOffset: { width: 0, height: 4 },
-      shadowOpacity: 0.2,
-      shadowRadius: 30,
-      elevation: 4,
-    }}
-  >
-    <View className="w-full h-32 rounded-xl bg-white items-center justify-center overflow-hidden mb-3">
-      <Image
-        source={image}
-        style={{ width: '100%', height: '100%' }}
-        resizeMode="contain"
-      />
-    </View>
-    <Text className="text-sm font-medium text-black mb-1">{title}</Text>
-    <Text className="text-sm font-bold text-black">{formatRupiah(price)}</Text>
-    <View className="flex-row items-center mt-1 space-x-1">
-      <Image
-        source={require('../assets/icons/star.png')}
-        className="w-4 h-4"
-        resizeMode="contain"
-      />
-      <Text className="text-xs text-gray-600">4.6</Text>
-      <Text className="text-xs text-gray-400">( {reviews} Reviews )</Text>
-    </View>
-  </TouchableOpacity>
-);
+  // PRODUCT CARD
+  const ProductCard = ({
+    title,
+    price,
+    reviews,
+    image,
+  }: {
+    title: string;
+    price: number;
+    reviews: number;
+    image: any;
+  }) => (
+    <TouchableOpacity
+      className="w-[48%] bg-white rounded-2xl p-3 mb-4"
+      style={{
+        shadowColor: '#687582',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.2,
+        shadowRadius: 30,
+        elevation: 4,
+      }}
+    >
+      <View className="w-full h-32 rounded-xl bg-white items-center justify-center overflow-hidden mb-3">
+        <Image
+          source={image}
+          style={{ width: '100%', height: '100%' }}
+          resizeMode="contain"
+        />
+      </View>
+      <Text className="text-sm font-medium text-black mb-1">{title}</Text>
+      <Text className="text-sm font-bold text-black">{formatRupiah(price)}</Text>
+      <View className="flex-row items-center mt-1 space-x-1">
+        <Image
+          source={require('../assets/icons/star.png')}
+          className="w-4 h-4"
+          resizeMode="contain"
+        />
+        <Text className="text-xs text-gray-600">4.6</Text>
+        <Text className="text-xs text-gray-400">( {reviews} Reviews )</Text>
+      </View>
+    </TouchableOpacity>
+  );
 
 export default function Homepage() {
   const navigation = useNavigation();
@@ -129,6 +129,16 @@ export default function Homepage() {
     ]).start(() => {
       navigation.navigate('Login');
     });
+  };
+  
+  const inputRef = useRef<TextInput>(null);
+  const [search, setSearch] = useState('');
+
+  const handleSubmit = () => {
+    if (search.trim() !== '') {
+      Keyboard.dismiss();
+      navigation.navigate('SearchResult', { keyword: search });
+    }
   };
   
   return (
@@ -180,17 +190,22 @@ export default function Homepage() {
           </View>
           
           {/* Search Bar */}
-          <View className="bg-white rounded-full px-4 py-2 flex-row items-center">
-            <Image 
+          <Pressable onPress={() => inputRef.current?.focus()} className="bg-white rounded-[10px] px-4 py-2 flex-row items-center">
+            <Image
               source={require('../assets/icons/search.png')}
               className="w-5 h-5 mr-2"
               resizeMode="contain"
             />
-            <TextInput 
+            <TextInput
+              ref={inputRef}
               placeholder="Search Something"
+              value={search}
+              onChangeText={setSearch}
+              onSubmitEditing={handleSubmit}
+              returnKeyType="search"
               className="flex-1"
             />
-          </View>
+          </Pressable>
         </View>
 
         {/* Featured Banner */}
