@@ -10,6 +10,8 @@ import SplashScreen from './components/SplashScreen';
 import Profile from 'Pages/Profile';
 import ProfileEdit from 'Pages/ProfileEdit';
 import SearchResult from 'Pages/SearchResult';
+import Notification from 'Pages/Notification';
+import Chat from 'Pages/Chat';
 
 type RootStackParamList = {
   Splash: undefined;
@@ -19,6 +21,8 @@ type RootStackParamList = {
   Profile: undefined;
   ProfileEdit: undefined;
   SearchResult: undefined;
+  Notification: undefined;
+  Chat: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +41,8 @@ export default function App() {
         <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="ProfileEdit" component={ProfileEdit} />
         <Stack.Screen name="SearchResult" component={SearchResult} />
+        <Stack.Screen name="Notification" component={Notification} />
+        <Stack.Screen name="Chat" component={Chat} />
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

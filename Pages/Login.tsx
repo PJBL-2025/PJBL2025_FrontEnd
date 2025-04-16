@@ -26,7 +26,7 @@ export default function Login() {
                     <Text className="flex-1 text-center text-white font-semibold text-base">
                         Log In
                     </Text>
-                    <View className="w-5" /> 
+                    <View className="w-5" />
                 </View>
 
                 {/* Form Section */}

@@ -152,7 +152,7 @@ export default function Homepage() {
           </Text>
 
             <View className="flex-row items-center space-x-3">
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
                 <Image 
                   source={require('../assets/icons/chat.png')}
                   className="w-6 h-6"
@@ -161,7 +161,7 @@ export default function Homepage() {
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                 <Image 
                   source={require('../assets/icons/notif.png')}
                   className="w-6 h-6"
@@ -171,7 +171,7 @@ export default function Homepage() {
               </TouchableOpacity>
 
               <TouchableOpacity>
-                <Image 
+                <Image
                   source={require('../assets/icons/cart.png')}
                   className="w-6 h-6"
                   resizeMode="contain"
