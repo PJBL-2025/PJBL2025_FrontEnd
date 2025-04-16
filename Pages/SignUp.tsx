@@ -18,7 +18,6 @@ export default function SignUp() {
             className="flex-1 px-4"
         >
             <SafeAreaView className="flex-1">
-
                 {/* Header */}
                 <View className="flex-row items-center mt-2 mb-6">
                     <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -77,7 +76,7 @@ export default function SignUp() {
                         </Text>
 
                         {/* Submit Button */}
-                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4">
+                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4" onPress={() => navigation.navigate('Login')}>
                             <Text className="text-white font-semibold">Sign Up</Text>
                         </TouchableOpacity>
 

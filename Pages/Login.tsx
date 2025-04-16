@@ -26,7 +26,7 @@ export default function Login() {
                     <Text className="flex-1 text-center text-white font-semibold text-base">
                         Log In
                     </Text>
-                    <View className="w-5" /> 
+                    <View className="w-5" />
                 </View>
 
                 {/* Form Section */}
@@ -63,7 +63,7 @@ export default function Login() {
                         </View>
 
                         {/* Button */}
-                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4">
+                        <TouchableOpacity className="bg-[#007AFF] py-3 rounded-xl items-center mb-4" onPress={() => navigation.navigate('Profile')}>
                             <Text className="text-white font-semibold">Next</Text>
                         </TouchableOpacity>
 
