@@ -1,61 +1,9 @@
-import React, { useState } from 'react';
-import { Image, Text, TouchableOpacity, View , ScrollView, Linking} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { ChevronLeft, Pencil, CircleHelp} from "lucide-react-native";
-
-const formatRupiah = (price: number) => {
-    return new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-        }).format(price);
-    };
-
-    // PRODUCT CARD
-    const ProductCard = ({
-        title,
-        price,
-        reviews,
-        image,
-    }: {
-        title: string;
-        price: number;
-        reviews: number;
-        image: any;
-    }) => (
-    <TouchableOpacity
-        className="w-[48%] bg-white rounded-2xl p-3 mb-4"
-        style={{
-            shadowColor: '#687582',
-            shadowOffset: { width: 0, height: 4 },
-            shadowOpacity: 0.2,
-            shadowRadius: 30,
-            elevation: 4,
-        }}
-        >
-        <View className="w-full h-32 rounded-xl bg-white items-center justify-center overflow-hidden mb-3">
-            <Image
-            source={image}
-            style={{ width: '100%', height: '100%' }}
-            resizeMode="contain"
-            />
-        </View>
-            <Text className="text-sm font-medium text-black mb-1">{title}</Text>
-            <Text className="text-sm font-bold text-black">{formatRupiah(price)}</Text>
-        <View className="flex-row items-center mt-1 space-x-1">
-            <Image
-            source={require('../assets/icons/star.png')}
-            className="w-4 h-4"
-            resizeMode="contain"
-            />
-            <Text className="text-xs text-gray-600">4.6</Text>
-            <Text className="text-xs text-gray-400">( {reviews} Reviews )</Text>
-        </View>
-    </TouchableOpacity>
-);
+import ProductCard from 'components/ProductCard';
+import { LinearGradient } from 'expo-linear-gradient';
+import { ChevronLeft, CircleHelp, Pencil } from "lucide-react-native";
+import { Image, Linking, ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Profile() {
     const navigation = useNavigation();
@@ -71,14 +19,16 @@ export default function Profile() {
             <SafeAreaView className="flex-1">
                 <ScrollView>
                     {/* Header */}
-                    <View className="flex-row items-center mt-2 mb-6 px-4">
+                    <View className="flex-row items-center justify-between mt-2 mb-6 px-4">
                         <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                             <ChevronLeft size={24} color="#FFFFFF" />
                         </TouchableOpacity>
-                        <Text className="flex-1 text-center text-white font-semibold text-base">
+                        <Text className='flex-1 text-center text-white text-lg font-semibold'>
                             Hello Username👋
                         </Text>
-                        <View className="w-5" />
+                        <TouchableOpacity onPress={() => Linking.openURL(`https://wa.me/${NomorHP}`)}>
+                            <CircleHelp size={30} color="#FFFFFF"/>
+                        </TouchableOpacity>
                     </View>
 
                     <View className='bg-white h-[95px] rounded-[15px] flex flex-row items-center mb-5 mx-4'
@@ -95,11 +45,11 @@ export default function Profile() {
                             <Text className='text-[20px] font-bold'>
                                 Milea Cantik
                             </Text>
-                            <Text className='text-[12px] font-bold'>
+                            <Text className='text-[12px] font-bold text-[#7f7f7fa4]'>
                                 082136412013
                             </Text>
-                            <Text className='text-[10px] font-bold'>
-                                mileapunyarifqi@gmail.com
+                            <Text className='text-[10px] font-bold text-[#7f7f7fa4]'>
+                                Mileannas
                             </Text>
                         </View>
                         <TouchableOpacity className='flex absolute right-2' onPress={() => navigation.navigate('ProfileEdit')}>
@@ -113,7 +63,7 @@ export default function Profile() {
                                 <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2'>
                                     <Image source={require('../assets/images/not-yet-paid.png')} className='w-12 h-12'/>
                                 </TouchableOpacity>
-                                <Text className='pt-3'>Not Yet Paid</Text>
+                                <Text className='pt-3'>Pending</Text>
                             </View>
                             <View className='flex items-center'>
                                 <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2'>
@@ -128,13 +78,6 @@ export default function Profile() {
                                 <Text className='pt-3'>Sent</Text>
                             </View>
                         </View>
-                    </View>
-                    <View className='bg-white h-[102px] p-2 mb-4'>
-                            <Text className='text-[#697078] font-medium'>Help Center</Text>
-                        <TouchableOpacity className='flex flex-row gap-x-2 items-center justify-center p-4' onPress={() => Linking.openURL(`https://wa.me/${NomorHP}`)}>
-                            <CircleHelp size={30} color="#007AFFD9"/>
-                            <Text className='font-medium text-[13px]'>Get any trouble?,<Text className='text-blue-500'>click here</Text> to get some help</Text>
-                        </TouchableOpacity>
                     </View>
                     <View className="bg-white px-4 pt-6 rounded-t-2xl">
                         <View className="flex-row flex-wrap justify-between">

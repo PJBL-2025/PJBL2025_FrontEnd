@@ -89,23 +89,26 @@ export default function ProfileEdit() {
                             className="border border-gray-300 px-4 py-2 rounded-md mb-4"
                         />
 
-                        {/* Email */}
-                        <Text className="font-bold mb-1">Email</Text>
+                        {/* Username */}
+                        <Text className="font-bold mb-1">Username</Text>
                         <TextInput
-                            placeholder="mileapunyarifqi@gmail.com"
-                            keyboardType="email-address"
+                            placeholder="Mileannas"
                             className="border border-gray-300 px-4 py-2 rounded-md mb-4"
                         />
 
                         {/* Password */}
                         <Text className="font-bold mb-1">Phone Number</Text>
-                        <View className="flex-row items-center border border-gray-300 px-2 rounded-md">
-                            <TextInput
-                                placeholder="082136412013"
-                                keyboardType='phone-pad'
-                                className="flex-1 py-2 px-2"
-                            />
-                        </View>
+                        <TextInput
+                            placeholder="082136412013"
+                            keyboardType='phone-pad'
+                            className="border border-gray-300 px-4 py-2 rounded-md mb-4"
+                        />
+                        
+                        <Text className="font-bold mb-1">Password</Text>
+                        <TextInput
+                            placeholder="OAWKOAKWOAKOWKAOWK"
+                            className="border border-gray-300 px-4 py-2 rounded-md mb-4"
+                        />
                         <Text className="text-gray-400 ml-2 mt-1 mb-8">
                             Don't forget to save before Exit
                         </Text>

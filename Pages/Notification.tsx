@@ -67,44 +67,37 @@ export default function Notification() {
                     </View>
 
                     {/* Chat Column */}
-                    <View className='bg-white w-full h-screen rounded-t-[25px] px-5'>
-                        <Text className='mt-5 mb-3'>Your Notification</Text>
-                        <TouchableOpacity className='relative mb-3'>
-                            <View className='border-black border rounded-xl flex flex-row justify-between p-3'>
-                                <Image className='rounded-full w-14 h-14' source={require('../assets/images/profile-dummy-2.jpg')}/>
-                                <View className='flex justify-center'>
-                                    <Text className='font-bold text-base'>
-                                        Username
-                                    </Text>
-                                    <Text numberOfLines={1} ellipsizeMode="tail" className="w-[281px] text-[#697078]">
-                                        Barang impianmu sudah ada di keranjang, siap SIGMAAAAAAAAAAAAAAAAAAAA
-                                    </Text>
-                                </View>
-                                <View>
-                                </View>
-                            </View>
-                            <Text className="text-[#697078] text-sm font-bold absolute right-6 top-3">
-                                {time}
+                    <View className='bg-white w-full h-screen rounded-t-[25px] px-5 pt-4'>
+                        <View className='mt-5'>
+                            <Text className='text-black font-medium text-sm mb-4'>
+                                Update Patch
                             </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity className='relative mb-3'>
-                            <View className='border-black border rounded-xl flex flex-row justify-between p-3'>
-                                <Image className='rounded-full w-14 h-14' source={require('../assets/images/profile-dummy-2.jpg')}/>
-                                <View className='flex justify-center'>
-                                    <Text className='font-bold text-base'>
-                                        Username
-                                    </Text>
-                                    <Text numberOfLines={1} ellipsizeMode="tail" className="w-[281px] text-[#697078]">
-                                        Barangnya jelek WLEEEE
-                                    </Text>
-                                </View>
-                                <View>
-                                </View>
-                            </View>
-                            <Text className="text-[#697078] text-sm font-bold absolute right-6 top-3">
-                                {time}
+                            <TouchableOpacity className='border border-black rounded-xl py-4 flex justify-start px-3'>
+                                <Text numberOfLines={1} ellipsizeMode="tail" className="w-[350px] text-[#697078]">
+                                    Whats new on our application??🧐🧐🧐🧐🧐, we have a new feature WAYAAWWWWWWawpapwkapwkapw
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View className='mt-5'>
+                            <Text className='text-black font-medium text-sm mb-4'>
+                                Order
                             </Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity className='border border-black rounded-xl py-4 flex justify-start px-3'>
+                                <Text numberOfLines={1} ellipsizeMode="tail" className="w-[350px] text-[#697078]">
+                                    Your dream items are already in your cart, waiting for you😍😍..
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
+                        <View className='mt-5'>
+                            <Text className='text-black font-medium text-sm mb-4'>
+                                Order
+                            </Text>
+                            <TouchableOpacity className='border border-black rounded-xl py-4 flex justify-start px-3'>
+                                <Text numberOfLines={1} ellipsizeMode="tail" className="w-[350px] text-[#697078]">
+                                    Aku adalah sigma dan sigma adalah aku
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </ScrollView>
             </SafeAreaView>

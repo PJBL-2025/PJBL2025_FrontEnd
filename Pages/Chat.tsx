@@ -84,7 +84,7 @@ export default function Chat() {
                         className="flex-1"
                         />
                     </Pressable>
-                        <TouchableOpacity className='relative mb-3'>
+                        <TouchableOpacity className='relative mb-3' onPress={() => navigation.navigate('Messager')}>
                             <View className='border-black border rounded-xl flex flex-row justify-between p-3'>
                                 <Image className='rounded-full w-14 h-14' source={require('../assets/images/profile-dummy-2.jpg')}/>
                                 <View className='flex justify-center'>

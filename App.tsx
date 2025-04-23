@@ -13,6 +13,7 @@ import SearchResult from 'Pages/SearchResult';
 import Notification from 'Pages/Notification';
 import Chat from 'Pages/Chat';
 import DetailsProduct from 'Pages/DetailsProduct';
+import Messager from 'Pages/Messager';
 
 type RootStackParamList = {
   Splash: undefined;
@@ -24,6 +25,7 @@ type RootStackParamList = {
   SearchResult: undefined;
   Notification: undefined;
   Chat: undefined;
+  Messager: undefined;
   DetailsProduct: undefined;
 };
 
@@ -45,6 +47,7 @@ export default function App() {
         <Stack.Screen name="SearchResult" component={SearchResult} />
         <Stack.Screen name="Notification" component={Notification} />
         <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="Messager" component={Messager} />
         <Stack.Screen name="DetailsProduct" component={DetailsProduct} />
       </Stack.Navigator>
       <StatusBar style="auto" />
