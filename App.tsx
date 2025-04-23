@@ -7,13 +7,9 @@ import Homepage from './Pages/Homepage';
 import Login from './Pages/Login';
 import Signup from './Pages/SignUp';
 import SplashScreen from './components/SplashScreen';
-import Profile from 'Pages/Profile';
-import ProfileEdit from 'Pages/ProfileEdit';
-import SearchResult from 'Pages/SearchResult';
-import Notification from 'Pages/Notification';
-import Chat from 'Pages/Chat';
 import DetailsProduct from 'Pages/DetailsProduct';
 import Messager from 'Pages/Messager';
+import CartProduct from 'Pages/Cart';
 
 type RootStackParamList = {
   Splash: undefined;
@@ -27,6 +23,8 @@ type RootStackParamList = {
   Chat: undefined;
   Messager: undefined;
   DetailsProduct: undefined;
+  Details: undefined;
+  Cart: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -35,7 +33,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
@@ -49,6 +47,8 @@ export default function App() {
         <Stack.Screen name="Chat" component={Chat} />
         <Stack.Screen name="Messager" component={Messager} />
         <Stack.Screen name="DetailsProduct" component={DetailsProduct} />
+        <Stack.Screen name="Details" component={DetailsProduct}/>
+        <Stack.Screen name="Cart" component={CartProduct}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
