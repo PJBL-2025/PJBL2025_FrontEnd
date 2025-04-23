@@ -22,7 +22,7 @@ export default function ProductCard({ title, price, reviews, image }: ProductCar
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('DetailsProduct')}
+      onPress={() => navigation.navigate('Details')}
       className="w-[48%] bg-white rounded-2xl p-3 mb-4"
       style={{
         shadowColor: '#687582',

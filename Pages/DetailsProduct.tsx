@@ -149,6 +149,7 @@ const ProductCard = ({
   );
 
 export default function DetailsProduct({ route }: { route: any }) {
+  const navigation = useNavigation();
   const [product, setProduct] = useState<Product>(mockProduct);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
@@ -211,8 +212,6 @@ export default function DetailsProduct({ route }: { route: any }) {
   const toggleDescription = () => {
     setIsDescriptionExpanded(!isDescriptionExpanded);
   };
-
-  const navigation = useNavigation();
 
   const addToCart = () => {
     if (!selectedColor) {

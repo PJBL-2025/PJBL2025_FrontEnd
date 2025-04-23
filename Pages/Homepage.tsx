@@ -119,7 +119,9 @@ export default function Homepage() {
                 />
               </TouchableOpacity>
 
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+
+                
                 <Image
                   source={require('../assets/icons/cart.png')}
                   className="w-6 h-6"
@@ -245,12 +247,7 @@ export default function Homepage() {
           </View>
 
           <View className="flex-row flex-wrap justify-between">
-            <ProductCard 
-              title="TMA-2 HD Wireless"
-              price={2000000}
-              reviews={86}
-              image={require('../assets/images/headphone.png')}
-            />
+            
             <ProductCard 
               title="TMA-2 HD Wireless"
               price={1500000}
