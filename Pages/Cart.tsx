@@ -1,8 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import { ChevronLeft, ShoppingCart, X } from "lucide-react-native"
+import { ChevronLeft, ShoppingCart } from "lucide-react-native"
 import { useState } from "react";
-import { Text, TouchableOpacity, View, Image, ScrollView, Modal, Pressable } from "react-native"
+import { Text, TouchableOpacity, View, ScrollView } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
+import ProductPreview from "../components/ProductPreview";
 
 interface Product {
     id: string;
@@ -14,8 +15,8 @@ interface Product {
     rating: number;
     reviewCount: number;
     seller: {
-      name: string;
-      avatar: any;
+        name: string;
+        avatar: any;
     };
 }
 
@@ -77,14 +78,36 @@ const formatPrice = (price: number) => {
 
 export default function CartProduct() {
     const [cartItems, setCartItems] = useState<CartItem[]>(mockCartItems);
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
     const navigation = useNavigation();
 
     const removeFromCart = (itemId: string) => {
         setCartItems(prev => prev.filter(item => item.id !== itemId));
+        setSelectedItems(prev => prev.filter(id => id !== itemId));
     };
 
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+        return cartItems
+            .filter(item => selectedItems.includes(item.id))
+            .reduce((total, item) => total + (item.product.price * item.quantity), 0);
+    };
+
+    const toggleItemSelection = (itemId: string) => {
+        setSelectedItems(prev => {
+            if (prev.includes(itemId)) {
+                return prev.filter(id => id !== itemId);
+            } else {
+                return [...prev, itemId];
+            }
+        });
+    };
+
+    const handleCheckout = () => {
+        // Here you would typically navigate to a checkout page or process the order
+        const selectedProducts = cartItems.filter(item => selectedItems.includes(item.id));
+        console.log('Checking out products:', selectedProducts);
+        // For now, just show an alert
+        alert('Proceeding to checkout...');
     };
 
     return (
@@ -107,28 +130,26 @@ export default function CartProduct() {
                             <Text className="text-gray-500 mt-4">Your cart is empty</Text>
                         </View>
                     ) : (
-                        <>
-                            {cartItems.map((item) => (
-                                <View key={item.id} className="flex-row items-center mb-4 p-3 bg-gray-50 rounded-xl">
-                                    <Image
-                                        source={item.product.image}
-                                        className="w-20 h-20 rounded-lg"
-                                    />
-                                    <View className="flex-1 ml-3">
-                                        <Text className="font-semibold">{item.product.name}</Text>
-                                        <Text className="text-gray-500">Color: {item.selectedColor}</Text>
-                                        <Text className="text-gray-500">Qty: {item.quantity}</Text>
-                                        <Text className="font-semibold">{formatPrice(item.product.price * item.quantity)}</Text>
-                                    </View>
-                                    <TouchableOpacity
-                                        onPress={() => removeFromCart(item.id)}
-                                        className="p-2"
+                        cartItems.map((item) => (
+                            <View key={item.id} className="mb-4">
+                                <View className="flex-row items-center">
+                                    <TouchableOpacity 
+                                        className="w-6 h-6 border-2 border-blue-500 rounded mr-2 items-center justify-center"
+                                        onPress={() => toggleItemSelection(item.id)}
                                     >
-                                        <X size={20} color="#FF0000" />
+                                        {selectedItems.includes(item.id) && (
+                                            <View className="w-4 h-4 bg-blue-500 rounded" />
+                                        )}
                                     </TouchableOpacity>
+                                    <View className="flex-1">
+                                        <ProductPreview
+                                            item={item}
+                                            onRemove={removeFromCart}
+                                        />
+                                    </View>
                                 </View>
-                            ))}
-                        </>
+                            </View>
+                        ))
                     )}
                 </View>
             </ScrollView>
@@ -140,15 +161,25 @@ export default function CartProduct() {
                         <Text className="text-lg font-semibold">Total</Text>
                         <Text className="text-lg font-bold">{formatPrice(calculateTotal())}</Text>
                     </View>
-                    <TouchableOpacity
-                        className="bg-blue-500 rounded-xl py-3"
-                        onPress={() => {
-                            // Handle checkout
-                            alert('Proceeding to checkout...');
-                        }}
-                    >
-                        <Text className="text-center text-white font-semibold">Checkout</Text>
-                    </TouchableOpacity>
+                    {selectedItems.length > 0 ? (
+                        <TouchableOpacity
+                            className="bg-blue-500 rounded-xl py-3"
+                            onPress={handleCheckout}
+                        >
+                            <Text className="text-center text-white font-semibold">
+                                Checkout ({selectedItems.length} items)
+                            </Text>
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity
+                            className="bg-gray-300 rounded-xl py-3"
+                            disabled={true}
+                        >
+                            <Text className="text-center text-gray-500 font-semibold">
+                                Select items to checkout
+                            </Text>
+                        </TouchableOpacity>
+                    )}
                 </View>
             )}
         </SafeAreaView>
