@@ -4,10 +4,12 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronLeft, Pencil } from "lucide-react-native";
+import { Popup } from 'components/Popup';
 import * as ImagePicker from 'expo-image-picker';
 
 export default function ProfileEdit() {
     const navigation = useNavigation();
+    const [showPopup, setShowPopup] = useState(false);
 
     const [image, setImage] = useState<string | null>(null);
 
@@ -115,12 +117,20 @@ export default function ProfileEdit() {
 
                         {/* Submit Button */}
                         <View className='flex flex-row items-center justify-center gap-x-5'>
-                            <TouchableOpacity className="bg-[#0ACF83] py-3 rounded-xl items-center mb-4 w-20">
+                            <TouchableOpacity className="bg-[#0ACF83] py-3 rounded-xl items-center mb-4 w-20" onPress={() => navigation.navigate('Profile')}>
                                 <Text className="text-white font-semibold text-[16px]">Save</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate('Profile')} className="bg-[#BF3131] py-3 rounded-xl items-center mb-4 w-20">
+                            <TouchableOpacity
+                                onPress={() => setShowPopup(true)}
+                                className="bg-[#BF3131] py-3 rounded-xl items-center mb-4 w-20"
+                            >
                                 <Text className="text-white font-semibold text-[16px]">Cancel</Text>
                             </TouchableOpacity>
+
+                            <Popup visible={showPopup}
+                                onClose={() => setShowPopup(false)}
+                                onConfirm={() => {setShowPopup(false); navigation.navigate('Profile');}}
+                            />
                         </View>
                     </View>
                 </View>
