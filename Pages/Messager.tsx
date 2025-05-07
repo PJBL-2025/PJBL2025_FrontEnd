@@ -9,16 +9,16 @@ import ChatInput from 'components/ChatInput';
 
 export default function Messager() {
     const navigation = useNavigation();
-    const [messages, setMessages] = useState<{ message: string; time: string; isUser: boolean }[]>([]);
-    // const [messages, setMessages] = useState([
+    // const [messages, setMessages] = useState<{ message: string; time: string; isUser: boolean }[]>([]);
+    const [messages, setMessages] = useState([
         
-    //     {
-    //     message:
-    //         "Psst... Something fabulous just landed! 👀\nFresh, fun, and full of vibe—get it while it’s still hot!🔥🔥",
-    //     time: '07.00 am',
-    //     isUser: false,
-    //     },
-    // ]);
+        {
+        message:
+            "Psst... Something fabulous just landed! 👀\nFresh, fun, and full of vibe—get it while it’s still hot!🔥🔥",
+        time: '07.00 am',
+        isUser: false,
+        },
+    ]);
 
     const [time, setTime] = useState('');
 

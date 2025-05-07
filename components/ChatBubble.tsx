@@ -4,11 +4,11 @@ import { View, Text } from 'react-native';
 type Props = {
   message: string;
   time: string;
-  isUser?: boolean; // tambahkan prop ini
+  isUser?: boolean;
 };
 
 const ChatBubble: React.FC<Props> = ({ message, time, isUser = false }) => {
-  const bubbleBg = isUser ? 'bg-[#DCF8C6]' : 'bg-white'; // warna hijau muda seperti WhatsApp untuk user
+  const bubbleBg = isUser ? 'bg-[#DCF8C6]' : 'bg-white';
   const textAlign = isUser ? 'items-end' : 'items-start';
   const tailStyle = isUser
     ? {
@@ -16,7 +16,7 @@ const ChatBubble: React.FC<Props> = ({ message, time, isUser = false }) => {
         borderTopWidth: 20,
         borderTopColor: 'transparent',
         borderLeftWidth: 20,
-        borderLeftColor: '#DCF8C6', // tail hijau
+        borderLeftColor: '#DCF8C6',
         bottom: 2,
       }
     : {
@@ -24,14 +24,13 @@ const ChatBubble: React.FC<Props> = ({ message, time, isUser = false }) => {
         borderTopWidth: 20,
         borderTopColor: 'transparent',
         borderRightWidth: 20,
-        borderRightColor: 'white', // tail putih
+        borderRightColor: 'white',
         bottom: 2,
       };
 
   return (
     <View className={`px-4 py-2 flex-row ${isUser ? 'justify-end' : ''}`}>
       <View className={`relative max-w-[280px] ${isUser ? 'mr-4' : 'ml-4'}`}>
-        {/* Bubble */}
         <View className={`${bubbleBg} rounded-2xl px-4 py-3`}>
           <Text className="text-black leading-5">{message}</Text>
           <Text className="text-xs text-gray-400 text-right mt-2">{time}</Text>
