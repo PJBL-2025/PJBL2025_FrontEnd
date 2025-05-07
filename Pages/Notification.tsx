@@ -55,10 +55,10 @@ export default function Notification() {
                         {/* KANAN */}
                         <View className="flex-row items-center space-x-2">
                             <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
-                                <Image source={require('../assets/icons/chat.png')} className="w-[30px] h-[30px]" />
+                                <Image source={require('../assets/icons/chat.png')} className="w-7 h-7" />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                                <Image source={require('../assets/icons/cart.png')} className="w-[30px] h-[30px]" />
+                                <Image source={require('../assets/icons/cart.png')} className="w-7 h-7" />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
                                 <Image source={require('../assets/images/profile-dummy.png')} className="w-[42px] h-[42px] rounded-full" />
