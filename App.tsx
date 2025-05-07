@@ -7,16 +7,17 @@ import Homepage from './Pages/Homepage';
 import Login from './Pages/Login';
 import Signup from './Pages/SignUp';
 import SplashScreen from './components/SplashScreen';
-import DetailsProduct from 'Pages/DetailsProduct';
-import Messager from 'Pages/Messager';
-import CartProduct from 'Pages/Cart';
+import DetailsProduct from './Pages/DetailsProduct';
+import Messager from './Pages/Messager';
 import Profile from './Pages/Profile';
+import CartProduct from './Pages/Cart';
 import ProfileEdit from './Pages/ProfileEdit';
 import SearchResult from './Pages/SearchResult';
-import Notification from './Pages/Notification';
 import Chat from './Pages/Chat';
-import OrderProduct from './Pages/OrderProduct';
-import OrderDetails from './Pages/OrderDetails';
+import Notification from './Pages/Notification';
+import Category from 'Pages/Category';
+import Design from './Pages/Design';
+
 
 type RootStackParamList = {
   Splash: undefined;
@@ -32,8 +33,8 @@ type RootStackParamList = {
   DetailsProduct: undefined;
   Details: undefined;
   Cart: undefined;
-  Order: undefined;
-  OrderDetails: { item: any };
+  Category: undefined;
+  Design: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -42,7 +43,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Order"
+        initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
@@ -58,8 +59,8 @@ export default function App() {
         <Stack.Screen name="DetailsProduct" component={DetailsProduct} />
         <Stack.Screen name="Details" component={DetailsProduct}/>
         <Stack.Screen name="Cart" component={CartProduct}/>
-        <Stack.Screen name="Order" component={OrderProduct}/>
-        <Stack.Screen name="OrderDetails" component={OrderDetails}/>
+        <Stack.Screen name="Category" component={Category}/>
+        <Stack.Screen name="Design" component={Design}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
