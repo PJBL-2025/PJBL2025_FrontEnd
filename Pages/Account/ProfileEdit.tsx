@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronLeft, Pencil } from "lucide-react-native";
 import { Popup } from 'components/Popup';
-import * as ImagePicker from 'expo-image-picker';
+// import * as ImagePicker from 'expo-image-picker';
 
 export default function ProfileEdit() {
     const navigation = useNavigation();
@@ -13,25 +13,25 @@ export default function ProfileEdit() {
 
     const [image, setImage] = useState<string | null>(null);
 
-    const pickImage = async () => {
-        // Request permission
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-        if (status !== 'granted') {
-        alert('Permission to access gallery is required!');
-        return;
-        }
+    // const pickImage = async () => {
+    //     // Request permission
+    //     const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    //     if (status !== 'granted') {
+    //     alert('Permission to access gallery is required!');
+    //     return;
+    //     }
 
-        const result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1,
-          });
+    //     const result = await ImagePicker.launchImageLibraryAsync({
+    //         mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    //         allowsEditing: true,
+    //         aspect: [1, 1],
+    //         quality: 1,
+    //       });
 
-        if (!result.canceled) {
-        setImage(result.assets[0].uri);
-        }
-    };
+    //     if (!result.canceled) {
+    //     setImage(result.assets[0].uri);
+    //     }
+    // };
 
     return (
         <LinearGradient
@@ -54,7 +54,8 @@ export default function ProfileEdit() {
                 </View>
 
                 <View className='flex items-center justify-center align-middle'>
-                    <TouchableOpacity onPress={pickImage} className="relative items-center justify-center">
+                    <View className="relative items-center justify-center">
+                    {/* onPress={pickImage} */}
                         <View style={{
                                 shadowColor: '#ffffff',
                                 shadowOffset: { width: 0, height: 8 },
@@ -66,14 +67,14 @@ export default function ProfileEdit() {
                                 justifyContent: 'center',
                             }}>
                             <Image
-                                source={image ? { uri: image } : require('../assets/images/profile-dummy.png')}
+                                source={image ? { uri: image } : require('assets/images/Profile/profile-dummy.png')}
                                 className="w-[120px] h-[120px] rounded-full mb-2"
                             />
                         </View>
-                        <View className="absolute -translate-x-1/2 -translate-y-1/2">
+                        {/* <View className="absolute -translate-x-1/2 -translate-y-1/2">
                             <Pencil size={28} color="#FFFFFF" />
-                        </View>
-                    </TouchableOpacity>
+                        </View> */}
+                    </View>
                     <Text className='text-white font-bold'>Change Profile Picture</Text>
                 </View>
                 {/* Form */}

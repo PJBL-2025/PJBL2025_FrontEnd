@@ -4,19 +4,22 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Homepage from './Pages/Homepage';
-import Login from './Pages/Login';
-import Signup from './Pages/SignUp';
+import Login from './Pages/Account/Login';
+import Signup from './Pages/Account/SignUp';
 import SplashScreen from './components/SplashScreen';
 import DetailsProduct from './Pages/DetailsProduct';
 import Messager from './Pages/Messager';
-import Profile from './Pages/Profile';
+import Profile from './Pages/Account/Profile';
 import CartProduct from './Pages/Cart';
-import ProfileEdit from './Pages/ProfileEdit';
+import ProfileEdit from './Pages/Account/ProfileEdit';
 import SearchResult from './Pages/SearchResult';
 import Chat from './Pages/Chat';
 import Notification from './Pages/Notification';
 import Category from 'Pages/Category';
 import Design from './Pages/Design';
+import Pending from 'Pages/Order/Pending';
+import OnDeliver from 'Pages/Order/OnDeliver';
+import Sent from 'Pages/Order/Sent';
 
 
 type RootStackParamList = {
@@ -35,6 +38,9 @@ type RootStackParamList = {
   Cart: undefined;
   Category: undefined;
   Design: undefined;
+  Pending: undefined;
+  OnDeliver: undefined;
+  Send: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -61,6 +67,9 @@ export default function App() {
         <Stack.Screen name="Cart" component={CartProduct}/>
         <Stack.Screen name="Category" component={Category}/>
         <Stack.Screen name="Design" component={Design}/>
+        <Stack.Screen name="Pending" component={Pending}/>
+        <Stack.Screen name="OnDeliver" component={OnDeliver}/>
+        <Stack.Screen name="Sent" component={Sent}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>

@@ -40,7 +40,7 @@ export default function Profile() {
                             elevation: 20,
                             borderRadius: 9999,
                         }}>
-                        <Image source={require('../assets/images/profile-dummy.png')} className='w-[75px] h-[76px] rounded-full ml-3'/>
+                        <Image source={require('assets/images/Profile/profile-dummy.png')} className='w-[75px] h-[76px] rounded-full ml-3'/>
                         <View className='ml-[26px]'>
                             <Text className='text-[20px] font-bold'>
                                 Milea Cantik
@@ -60,20 +60,20 @@ export default function Profile() {
                             <Text className='text-[#697078] font-medium'>My Order</Text>
                         <View className='flex flex-row gap-x-8 justify-center p-3'>
                             <View className='flex items-center'>
-                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2'>
-                                    <Image source={require('../assets/images/not-yet-paid.png')} className='w-12 h-12'/>
+                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2' onPress={() => navigation.navigate('Pending')}>
+                                    <Image source={require('assets/images/not-yet-paid.png')} className='w-12 h-12'/>
                                 </TouchableOpacity>
                                 <Text className='pt-3'>Pending</Text>
                             </View>
                             <View className='flex items-center'>
-                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2'>
-                                    <Image source={require('../assets/images/deliver-on-process.png')} className='w-12 h-12'/>
+                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2' onPress={() => navigation.navigate('OnDeliver')}>
+                                    <Image source={require('assets/images/deliver-on-process.png')} className='w-12 h-12'/>
                                 </TouchableOpacity>
                                 <Text className='pt-3'>On Delivery</Text>
                             </View>
                             <View className='flex items-center'>
-                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2'>
-                                    <Image source={require('../assets/images/sent.png')} className='w-12 h-12'/>
+                                <TouchableOpacity className='border-2 border-blue-500 rounded-xl p-2' onPress={() => navigation.navigate('Sent')}>
+                                    <Image source={require('assets/images/sent.png')} className='w-12 h-12'/>
                                 </TouchableOpacity>
                                 <Text className='pt-3'>Sent</Text>
                             </View>
@@ -85,49 +85,49 @@ export default function Profile() {
                             title="TMA-2 HD Wireless"
                             price={2000000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={1500000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={1800000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={2500000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={2000000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={1500000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={1800000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                             <ProductCard 
                             title="TMA-2 HD Wireless"
                             price={2500000}
                             reviews={86}
-                            image={require('../assets/images/headphone.png')}
+                            image={require('assets/images/headphone.png')}
                             />
                         </View>
                     </View>

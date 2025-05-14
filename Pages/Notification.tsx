@@ -61,7 +61,7 @@ export default function Notification() {
                                 <Image source={require('../assets/icons/cart.png')} className="w-7 h-7" />
                             </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
-                                <Image source={require('../assets/images/profile-dummy.png')} className="w-[42px] h-[42px] rounded-full" />
+                                <Image source={require('../assets/images/Profile/profile-dummy.png')} className="w-[42px] h-[42px] rounded-full" />
                             </TouchableOpacity>
                         </View>
                     </View>

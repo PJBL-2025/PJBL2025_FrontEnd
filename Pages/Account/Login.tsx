@@ -19,7 +19,7 @@ export default function Login() {
         >
             <SafeAreaView className="flex-1">
                 {/* Header */}
-                <View className="flex-row items-center mt-2 mb-6">
+                <View className="flex-row items-center mt-2">
                     <TouchableOpacity onPress={() => navigation.navigate('Home')}>
                         <ChevronLeft size={24} color="#FFFFFF" />
                     </TouchableOpacity>
@@ -54,8 +54,8 @@ export default function Login() {
                                 <Image
                                     source={
                                         showPassword
-                                            ? require('../assets/icons/open-eye.png')
-                                            : require('../assets/icons/close-eye.png')
+                                            ? require('assets/icons/open-eye.png')
+                                            : require('assets/icons/close-eye.png')
                                     }
                                     className="w-5 h-5"
                                 />
