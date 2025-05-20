@@ -44,7 +44,7 @@ export default function ProfileEdit() {
 
                 {/* Header */}
                 <View className="flex-row items-center mt-2 mb-6">
-                    <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
                         <ChevronLeft size={24} color="#FFFFFF" />
                     </TouchableOpacity>
                     <Text className="flex-1 text-center text-white font-semibold text-base">
@@ -88,28 +88,19 @@ export default function ProfileEdit() {
                         {/* Username */}
                         <Text className="font-bold mb-1">Name</Text>
                         <TextInput
-                            placeholder="Milea Cantik"
+                            placeholder="Name Sebelumnya"
                             className="border border-gray-300 px-4 py-2 rounded-md mb-4"
                         />
 
                         {/* Username */}
                         <Text className="font-bold mb-1">Username</Text>
                         <TextInput
-                            placeholder="Mileannas"
+                            placeholder="@username sebelumnya"
                             className="border border-gray-300 px-4 py-2 rounded-md mb-4"
                         />
-
-                        {/* Password */}
-                        <Text className="font-bold mb-1">Phone Number</Text>
-                        <TextInput
-                            placeholder="082136412013"
-                            keyboardType='phone-pad'
-                            className="border border-gray-300 px-4 py-2 rounded-md mb-4"
-                        />
-                        
                         <Text className="font-bold mb-1">Password</Text>
                         <TextInput
-                            placeholder="OAWKOAKWOAKOWKAOWK"
+                            placeholder="Password Sebelumnya"
                             className="border border-gray-300 px-4 py-2 rounded-md mb-4"
                         />
                         <Text className="text-gray-400 ml-2 mt-1 mb-8">

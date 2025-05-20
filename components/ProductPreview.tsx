@@ -1,5 +1,6 @@
 import { X } from "lucide-react-native";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Image, Text, TouchableOpacity, View, Modal } from "react-native";
 
 interface Product {
     id: string;
@@ -37,6 +38,16 @@ const formatPrice = (price: number) => {
 };
 
 const ProductPreview = ({ item, onRemove }: ProductPreviewProps) => {
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const handleCancel = () => {
+        setModalVisible(true);
+    };
+
+    const handleConfirm = () => {
+        setModalVisible(false);
+        onRemove(item.id);
+    };
     return (
         <View className="flex-row items-center mb-4 p-3 bg-gray-50 rounded-xl">
             <Image
@@ -46,15 +57,46 @@ const ProductPreview = ({ item, onRemove }: ProductPreviewProps) => {
             <View className="flex-1 ml-3">
                 <Text className="font-semibold">{item.product.name}</Text>
                 <Text className="text-gray-500">Color: {item.selectedColor}</Text>
-                <Text className="text-gray-500">Qty: {item.quantity}</Text>
+                <Text className="text-gray-500">Quantity: {item.quantity}</Text>
                 <Text className="font-semibold">{formatPrice(item.product.price * item.quantity)}</Text>
             </View>
-            <TouchableOpacity
-                onPress={() => onRemove(item.id)}
-                className="p-2"
-            >
-                <X size={20} color="#FF0000" />
-            </TouchableOpacity>
+            <>
+                <TouchableOpacity
+                    onPress={handleCancel}
+                    className="p-2"
+                >
+                    <X size={20} color="#FF0000" />
+                </TouchableOpacity>
+
+                    <Modal
+                        animationType="fade" // Ubah animasi menjadi fade
+                        transparent={true}
+                        visible={modalVisible}
+                        onRequestClose={() => setModalVisible(false)}
+                    >
+                    <View className="flex-1 justify-center items-center bg-black/50">
+                    <View className="bg-white w-80 p-5 rounded-xl">
+                        <Text className="text-lg font-bold mb-4 text-center">
+                            You sure want to remove this item from your cart?
+                        </Text>
+                        <View className="flex-row justify-center gap-x-5">
+                        <TouchableOpacity
+                            onPress={() => setModalVisible(false)}
+                            className="bg-gray-300 px-4 py-2 rounded-lg"
+                        >
+                            <Text className="text-black font-semibold">No</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={handleConfirm}
+                            className="bg-red-500 px-4 py-2 rounded-lg"
+                        >
+                            <Text className="text-white font-semibold">Yes</Text>
+                        </TouchableOpacity>
+                        </View>
+                    </View>
+                    </View>
+                </Modal>
+                </>
         </View>
     );
 };

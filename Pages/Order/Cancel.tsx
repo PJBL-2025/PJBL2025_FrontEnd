@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { ChevronLeft } from "lucide-react-native";
 import { View, Text, TouchableOpacity, StatusBar, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ProductSuccess from "components/ProductSuccess";
+import ProductCancel from "components/ProductCancel";
 
 interface Product {
     id: string;
@@ -32,7 +32,7 @@ interface Product {
     cartItems: CartItem[];
   }
   
-export default function Sent() {
+export default function Cancel() {
     const navigation = useNavigation();
     
     // Dummy data
@@ -94,6 +94,25 @@ export default function Sent() {
             quantity: 1,
             selectedColor: 'Black',
         },
+        {
+            id: '4',
+            product: {
+                id: '4',
+                name: 'TMA-2 Comfort Wireless',
+                description: 'High-quality headphones',
+                price: 755000, // dalam IDR
+                image: require('assets/images/headphone.png'),
+                colors: ['Black', 'White'],
+                rating: 4.5,
+                reviewCount: 120,
+                seller: {
+                    name: 'Audio Store',
+                    avatar: null,
+                },
+            },
+            quantity: 1,
+            selectedColor: 'Black',
+        },
     ]);
 
     // Handler untuk menghapus item
@@ -134,23 +153,23 @@ export default function Sent() {
                                 On Progress
                             </Text>
                         </TouchableOpacity>
-                        <View className="">
+                        <TouchableOpacity className=""onPress={() => navigation.navigate("Sent")}>
                             <Text className="text-center text-white font-semibold text-base">
                                 Success
                             </Text>
-                            <View className="absolute left-0 right-0 -bottom-1 h-[2px] bg-white shadow-white shadow-md" />
-                        </View>
-                        <TouchableOpacity className="" onPress={() => navigation.navigate("Cancel")}>
+                        </TouchableOpacity>
+                        <View className="">
                             <Text className="text-center text-white font-semibold text-base">
                                 Cancel
                             </Text>
-                        </TouchableOpacity>
+                            <View className="absolute left-0 right-0 -bottom-1 h-[2px] bg-white shadow-white shadow-md" />
+                        </View>
                     </View>
                     <View className="w-5" />
                 </View>
                 <ScrollView className="mt-4">
                     {cartItems.map((item) => (
-                        <ProductSuccess key={item.product.id} item={item} />
+                        <ProductCancel key={item.product.id} item={item} />
                     ))}
                 </ScrollView>
             </SafeAreaView>

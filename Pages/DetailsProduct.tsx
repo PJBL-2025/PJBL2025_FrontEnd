@@ -253,7 +253,7 @@ export default function DetailsProduct({ route }: { route: any }) {
       <SafeAreaView className="flex-1 bg-blue-500">
         {/* Header */}
         <View className="flex-row items-center mt-2 mb-6 p-4">
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <ChevronLeft size={24} color="#FFFFFF" />
             </TouchableOpacity>
             <Text className="flex-1 text-center text-white font-semibold text-base">Detail Product</Text>

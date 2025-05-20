@@ -42,14 +42,11 @@ export default function Profile() {
                         }}>
                         <Image source={require('assets/images/Profile/profile-dummy.png')} className='w-[75px] h-[76px] rounded-full ml-3'/>
                         <View className='ml-[26px]'>
-                            <Text className='text-[20px] font-bold'>
-                                Milea Cantik
+                            <Text className='text-[23px] font-bold'>
+                                Name
                             </Text>
-                            <Text className='text-[12px] font-bold text-[#7f7f7fa4]'>
-                                082136412013
-                            </Text>
-                            <Text className='text-[10px] font-bold text-[#7f7f7fa4]'>
-                                Mileannas
+                            <Text className='text-[15px] font-bold text-[#7f7f7fa4]'>
+                                @username
                             </Text>
                         </View>
                         <TouchableOpacity className='flex absolute right-2' onPress={() => navigation.navigate('ProfileEdit')}>
@@ -80,6 +77,9 @@ export default function Profile() {
                         </View>
                     </View>
                     <View className="bg-white px-4 pt-6 rounded-t-2xl">
+                        <Text className='font-bold mb-5'>
+                            Recomendation Products
+                        </Text>
                         <View className="flex-row flex-wrap justify-between">
                             <ProductCard 
                             title="TMA-2 HD Wireless"

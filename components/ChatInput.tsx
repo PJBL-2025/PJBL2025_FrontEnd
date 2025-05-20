@@ -21,6 +21,7 @@ const ChatInput: React.FC<Props> = ({ onSend }) => {
         className="flex-1 px-3 py-2 bg-gray-100 rounded-full text-black"
         value={input}
         onChangeText={setInput}
+        multiline={true}
         placeholder="Ketik pesan..."
       />
       <TouchableOpacity onPress={handleSend} className="ml-2">

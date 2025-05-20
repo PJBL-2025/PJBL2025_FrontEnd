@@ -20,6 +20,7 @@ import Design from './Pages/Design';
 import Pending from 'Pages/Order/Pending';
 import OnDeliver from 'Pages/Order/OnDeliver';
 import Sent from 'Pages/Order/Sent';
+import Cancel from 'Pages/Order/Cancel';
 
 
 type RootStackParamList = {
@@ -41,6 +42,7 @@ type RootStackParamList = {
   Pending: undefined;
   OnDeliver: undefined;
   Send: undefined;
+  Cancel: undefined;
 };
 
 const Stack = createNativeStackNavigator();
@@ -49,7 +51,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Splash"
+        initialRouteName="Profile"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
@@ -70,6 +72,7 @@ export default function App() {
         <Stack.Screen name="Pending" component={Pending}/>
         <Stack.Screen name="OnDeliver" component={OnDeliver}/>
         <Stack.Screen name="Sent" component={Sent}/>
+        <Stack.Screen name="Cancel" component={Cancel}/>
       </Stack.Navigator>
       <StatusBar style="auto" />
     </NavigationContainer>
